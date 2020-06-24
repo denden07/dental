@@ -268,80 +268,18 @@ Website: http://www.webthemez.com/
 
 
                 <li>
-                    <a class="@yield('employee-status')"  href="#"><i class="fas fa-user-tie"></i></i> Employee<span class="fa arrow"></span></a>
+                    <a class="@yield('employee-status')"  href="#"><i class="fas fa-user-tie"></i></i> Patients<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="">Employee List</a>
+                            <a href="">Patient List</a>
                         </li>
                         <li>
-                            <a href="">Add Employee</a>
+                            <a href="">Add Patient</a>
                         </li>
                     </ul>
                 </li>
 
 
-                <li>
-                    <a class="@yield('department-status')" href="#"><i class="fas fa-users"></i> Departments<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="">Department List</a>
-                        </li>
-
-
-                    </ul>
-                </li>
-
-
-                <li>
-                    <a class="@yield('attendance-status')" href="#"><i class="fas fa-calendar-day"></i>Attendance<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="">Manage Attendance</a>
-                        </li>
-                        {{--<li>--}}
-                        {{--<a href="{{route('admin.attendance.report',['date'=>date('Y-m')])}}">Attendance Report</a>--}}
-                        {{--</li>--}}
-                    </ul>
-                </li>
-
-                <li>
-                    <a class="@yield('payslip-status')" href="#"><i class="fas fa-money-bill-wave"></i>Payroll<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="">Manage Employee Salary</a>
-                        </li>
-                        {{--<li>--}}
-                        {{--<a href="#">Employee Salary List</a>--}}
-                        {{--</li>--}}
-                        {{--<li>--}}
-                        {{--<a href="#">Generate Payslip</a>--}}
-                        {{--</li>--}}
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#"><i class="fas fa-user"></i>Users<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="#">User List</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#"><i class="fas fa-cog"></i>Settings<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="#">Manage Holidays</a>
-                        </li>
-                        <li>
-                            <a href="#">Manage Leave Types</a>
-                        </li>
-                        <li>
-                            <a href="#">Edit User</a>
-                        </li>
-                    </ul>
-                </li>
 
 
 

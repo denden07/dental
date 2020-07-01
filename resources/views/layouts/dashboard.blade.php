@@ -271,10 +271,7 @@ Website: http://www.webthemez.com/
                     <a class="@yield('employee-status')"  href="#"><i class="fas fa-user-tie"></i></i> Patients<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="">Patient List</a>
-                        </li>
-                        <li>
-                            <a href="">Add Patient</a>
+                            <a href="{{route('patient.list')}}">Manage Patients</a>
                         </li>
                     </ul>
                 </li>

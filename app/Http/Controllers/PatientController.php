@@ -4,8 +4,37 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class PatientController extends Controller
 {
+
+    public function list ()
+    {
+
+
+
+        return view('patient.list');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +43,6 @@ class DashboardController extends Controller
     public function index()
     {
         //
-        return view('dashboard.index');
     }
 
     /**

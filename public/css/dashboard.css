@@ -6082,3 +6082,56 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
 }
 
+.patient-form-body label {
+  display: block;
+}
+
+.patient-form-body input {
+  width: 300px;
+}
+
+.patient-form-body input[type=date] {
+  width: 140px;
+}
+
+.patient-form-body input[type=checkbox] {
+  width: 30px;
+  display: inline;
+}
+
+.patient-form-body .patient-checkbox-label {
+  display: inline !important;
+}
+
+.patient-form-body .patient-age {
+  width: 80px;
+}
+
+.patient-form-body .form-check-label {
+  display: inline !important;
+}
+
+.divider {
+  margin-right: 50px;
+}
+
+.address {
+  width: 500px !important;
+}
+
+.occupation {
+  width: 200px !important;
+}
+
+.occupation-divider {
+  margin-left: 250px;
+}
+
+.divider2 {
+  margin-right: 200px;
+}
+
+.divider3 {
+  margin-right: 100px;
+}
+

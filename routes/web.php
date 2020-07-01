@@ -20,3 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('admin-dashboard','DashboardController@index')->name('dashboard.home');
+
+//Patient
+Route::get('patient-list','PatientController@list')->name('patient.list');
+
+Route::post('patient-store','PatientController@store')->name('patient.store');

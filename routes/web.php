@@ -24,4 +24,4 @@ Route::get('admin-dashboard','DashboardController@index')->name('dashboard.home'
 //Patient
 Route::get('patient-list','PatientController@list')->name('patient.list');
 
-Route::post('patient-store','PatientController@store')->name('patient.store');
+Route::post('patient-store','PatientController@addPatient')->name('patient.store');

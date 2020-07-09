@@ -32,10 +32,10 @@
 
 
 
-            <div>
+
                 <button type="button"   data-toggle="modal" class="btn-success button-enroll-enlistment-list" data-target="#exampleModalCenter1"><i class="fas fa-plus-circle"></i></button></td>
               Add Patient
-            </div>
+
 
 
 
@@ -44,58 +44,73 @@
                 <th><input id="select-all-enlistment" type="checkbox" onclick="checkAll(this)"></th>
                 <th>Name</th>
                 <th>
-                    Department
+                    Age
                 </th>
                 <th>
-                    Position
+                    Sex
                 </th>
-                <th>Mobile No.</th>
-                <th>Status</th>
+                <th>Blood Type</th>
+                <th>Contact Number</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
+            @foreach($patients as $patient)
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{$patient->id}}</td>
+                <td>{{$patient->name}}</td>
+                <td>{{$patient->age}}</td>
+                <td>{{$patient->sex}}</td>
+                <td>{{$patient->medical->blood_type}}</td>
+                <td>{{$patient->contact}}</td>
+                <td>
+                    <button type="button"   data-toggle="modal" class="btn-success button-enroll-enlistment-list" data-target="#exampleModal{{$patient->id}}"><i class="fas fa-plus-circle"></i></button>
+                    <a href=""><button class="btn-primary"><i class="fas fa-pen"></i></button></a>
+                    <button class="btn-danger"><i class="fas fa-trash"></i></button>
+                </td>
+
+                <div class="modal fade" id="exampleModal{{$patient->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">{{$patient->id}}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </tr>
+                @endforeach
             </tbody>
             <tfoot>
             <tr>
                 <td></td>
                 <td>Name</td>
                 <td>
-                    <select data-column="2" class="form-control filter-select">
-
-
-
-                        <option value="">Department</option>
-
-
-
-                    </select>
+                    Age
                 </td>
                 <td>
-                    <select data-column="3" class="form-control filter-select">
-
-
-
-
-                    </select>
+                    Sex
                 </td>
-                <td>Mobile No.</td>
-                <td>Status</td>
+                <td>Blood Type</td>
+                <td>Contact Number</td>
                 <td>Actions</td>
             </tr>
             </tfoot>
         </table>
 
     </div>
+    {!! Form::open(['method'=>'POST','action'=>'PatientController@addPatient','files'=>true]) !!}
     <div class="modal fade bd-example-modal-lg" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
             <div class="modal-content">
@@ -109,7 +124,7 @@
                     <div class="patient-form-body">
 
 
-                    {!! Form::open(['method'=>'POST','action'=>'PatientController@store','files'=>true]) !!}
+
 
                     <h4 style="text-align: center;font-weight: bold;margin-bottom: 20px">Patient Info</h4>
                         <div style="margin-bottom: 15px" class="row">
@@ -145,6 +160,18 @@
                                 {!! Form::label('nationality','Nationality:',['class'=>'patient-name']) !!}
                                 {!! Form::text('nationality',null,['class'=>'']) !!}
                             </div>
+
+                            <div class="col-lg-4 divider">
+                                {!! Form::label('contact','Contact:',['class'=>'patient-name']) !!}
+                                {!! Form::text('contact',null,['class'=>'']) !!}
+                            </div>
+
+                            <div class="col-lg-4 divider">
+                                {!! Form::label('email','Email:',['class'=>'patient-name']) !!}
+                                {!! Form::text('email',null,['class'=>'']) !!}
+                            </div>
+
+
                         </div>
 
                             <div style="margin-bottom: 15px"  class="row">
@@ -285,7 +312,7 @@
                             <div style="margin-bottom: 5px" class="row">
                                 <div class="col-lg-3">
                                     {!! Form::label('serious_illness','Serious Illness/Surgery:',['class'=>'patient-checkbox-label']) !!}
-                                    {!! Form::checkbox('under_treatment','1',null,false,['class'=>'patient-checkbox']) !!}
+                                    {!! Form::checkbox('serious_illness','1',null,false,['class'=>'patient-checkbox']) !!}
                                 </div>
                             </div>
 
@@ -308,7 +335,7 @@
                             <div style="margin-bottom: 5px" class="row">
                                 <div class="col-lg-9">
                                     {!! Form::label('hospitalized_cause','Hospitalized Cause:',['class'=>'patient-checkbox-label']) !!}
-                                    {!! Form::text('patient-checkbox-label',null,['class'=>'']) !!}
+                                    {!! Form::text('hospitalized_cause',null,['class'=>'']) !!}
                                 </div>
                             </div>
 
@@ -384,7 +411,7 @@ Alergic to Any?
 
                             <div  style="margin-bottom: 5px" class="col-lg-6">
                                 {!! Form::label('bleeding_time','Bleeding time:',['class'=>'form-check-label']) !!}
-                                {!! Form::text('bleeding_time',null,['class'=>'']) !!}
+                                {!! Form::date('bleeding_time',null,['class'=>'']) !!}
                             </div>
                         </div>
 
@@ -465,17 +492,17 @@ Alergic to Any?
                         <div style="margin-bottom: 10px"  class="row">
                             <div style="margin-bottom: 5px"  class="col-lg-2">
                                 {!! Form::label('fainting','Fainting:',['class'=>'patient-checkbox-label']) !!}
-                                {!! Form::checkbox('aids','1',null,false,['class'=>'patient-checkbox']) !!}
+                                {!! Form::checkbox('fainting','1',null,false,['class'=>'patient-checkbox']) !!}
                             </div>
 
                             <div style="margin-bottom: 5px"  class="col-lg-3">
                                 {!! Form::label('rapid_weight_loss','Rapid Weight Loss:',['class'=>'patient-checkbox-label']) !!}
-                                {!! Form::checkbox('std','1',null,false,['class'=>'patient-checkbox']) !!}
+                                {!! Form::checkbox('rapid_weight_loss','1',null,false,['class'=>'patient-checkbox']) !!}
                             </div>
 
                             <div style="margin-bottom: 5px"  class="col-lg-3">
                                 {!! Form::label('radiation_therapy','Radiation Therapy:',['class'=>'patient-checkbox-label']) !!}
-                                {!! Form::checkbox('ulcers','1',null,false,['class'=>'patient-checkbox']) !!}
+                                {!! Form::checkbox('radiation_therapy','1',null,false,['class'=>'patient-checkbox']) !!}
                             </div>
                         </div>
 
@@ -633,7 +660,7 @@ Alergic to Any?
                             </div>
                         </div>
 
-                        {!! Form::close() !!}
+
                     </div>
                     </div>
                 </div>
@@ -643,9 +670,10 @@ Alergic to Any?
                 </div>
             </div>
         </div>
+
     </div>
 
-
+    {!! Form::close() !!}
 
 
 @endsection

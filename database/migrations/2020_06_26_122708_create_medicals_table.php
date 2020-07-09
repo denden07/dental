@@ -45,7 +45,7 @@ class CreateMedicalsTable extends Migration
             $table->integer('aspirin')->nullable();
             $table->integer('penicilin')->nullable();
             $table->integer('latex')->nullable();
-            $table->integer('others')->nullable();
+            $table->string('others')->nullable();
 
             $table->date('bleeding_time')->nullable();
             $table->integer('pregnant')->nullable();
@@ -93,7 +93,7 @@ class CreateMedicalsTable extends Migration
             $table->integer('blood_diseases')->nullable();
             $table->integer('head_injuries')->nullable();
             $table->integer('arthritis')->nullable();
-            $table->integer('other_disease')->nullable();
+            $table->string('other_disease')->nullable();
 
             $table->timestamps();
         });

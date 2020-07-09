@@ -69,26 +69,62 @@
                     <button class="btn-danger"><i class="fas fa-trash"></i></button>
                 </td>
 
-                <div class="modal fade" id="exampleModal{{$patient->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
+                <div class="modal fade bd-example-modal-lg" id="exampleModal{{$patient->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    {!! Form::open(['method'=>'POST','action'=>'TransactionsController@addTransaction','files'=>true]) !!}
+                    <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">{{$patient->id}}</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Service Transaction of  <strong>{{$patient->name}}</strong></h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
+                            <div class="row">
+
+                                <div style="display: none" class="col-lg-2">
+
+                                    {!! Form::number('patient_id',$patient->id) !!}
+                                </div>
+
+                                <div style="margin-right: 10%" class="col-lg-2">
+                                    {!! Form::label('service_id','Service:') !!}
+                                    {!! Form::select('service_id',[null=>'Choose Here',$services],null,['class'=>'']) !!}
+                                </div>
+
+                                <div style="margin-right: 5%" class="col-lg-2">
+                                    {!! Form::label('cost','Cost:') !!}
+                                    {!! Form::number('cost',null,['class'=>'']) !!}
+                                </div>
+
+                                <div id="hidden_input" style="display: none;margin-right: 10%" class="col-lg-2">
+                                    {!! Form::label('partial','Partial Payment:') !!}
+                                    {!! Form::number('partial',null,['class'=>'']) !!}
+                                </div>
 
 
+                                <div style="margin-right: 5%"  class="col-lg-2">
+                                    {!! Form::label('mode','Mode of Payment:') !!}
+                                    {!! Form::select('mode',[null=>'Choose Here','full'=>'Full','installment'=>'Installment'],null,['onchange'=>'showDiv(this)'],['class'=>'']) !!}
+                                </div>
+
+
+                                <div class="col-lg-2">
+                                    {!! Form::label('transaction_date','Date:',['class'=>'patient-name']) !!}
+                                    {!! Form::date('transaction_date',null,['class'=>'']) !!}
+                                </div>
+
+                            </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <button type="submit" class="btn btn-primary">Add Transaction</button>
+                                {!! Form::close() !!}
                             </div>
                         </div>
                     </div>
                 </div>
+
             </tr>
                 @endforeach
             </tbody>
@@ -734,5 +770,14 @@ Alergic to Any?
 
     </script>
 
+    <script>
+        function showDiv(select){
+            if(select.value== "installment"){
+                document.getElementById('hidden_input').style.display = "block";
+            } else{
+                document.getElementById('hidden_input').style.display = "none";
+            }
+        }
+    </script>
 
 @endsection

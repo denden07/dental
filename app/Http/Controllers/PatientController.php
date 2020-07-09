@@ -13,7 +13,7 @@ class PatientController extends Controller
     public function list ()
     {
         $patients = Patient::all();
-        $services = Service::all();
+        $services = Service::all()->sortBy('name')->pluck('name','id');
 
 
         return view('patient.list',compact('patients','services'));
@@ -115,6 +115,7 @@ class PatientController extends Controller
         $medical->save();
 
 
+        return redirect()->back();
     }
 
 

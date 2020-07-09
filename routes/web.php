@@ -25,3 +25,4 @@ Route::get('admin-dashboard','DashboardController@index')->name('dashboard.home'
 Route::get('patient-list','PatientController@list')->name('patient.list');
 
 Route::post('patient-store','PatientController@addPatient')->name('patient.store');
+Route::post('transaction-store','TransactionsController@addTransaction')->name('transaction.store');
